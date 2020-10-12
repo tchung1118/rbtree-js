@@ -1,0 +1,19 @@
+{
+  "name": "rbtree-js",
+  "version": "1.0.0",
+  "description": "A simple implementation of Red-Black tree in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tchung1118/rbtree-js.git"
+  },
+  "author": "Taiwon Chung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tchung1118/rbtree-js/issues"
+  },
+  "homepage": "https://github.com/tchung1118/rbtree-js#readme"
+}
