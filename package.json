@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/tchung1118/rbtree-js/issues"
   },
-  "homepage": "https://github.com/tchung1118/rbtree-js#readme"
+  "homepage": "https://github.com/tchung1118/rbtree-js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^26.5.3"
+  }
 }
