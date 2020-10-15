@@ -7,7 +7,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "jest"
+    "test": "mocha --reporter spec --require ts-node/register lib/**/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/tchung1118/rbtree-js#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.13",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }
 }
