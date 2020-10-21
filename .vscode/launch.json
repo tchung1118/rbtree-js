@@ -19,7 +19,6 @@
         "ts-node/register",
         "lib/**/*.test.ts"
       ],
-      "preLaunchTask": "tsc: build - tsconfig.json",
       "internalConsoleOptions": "openOnSessionStart",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"

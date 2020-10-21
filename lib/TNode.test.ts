@@ -80,5 +80,53 @@ describe('TNode', function() {
       p2.left = c;
       expect(c.getUncle()).to.equal(p1);
     });
-  })
+  });
+
+  describe('right rotation', function() {
+    const root = new TNode(4, 4);
+    const rootLeft = new TNode(2, 2);
+    const rootLeftLeft = new TNode(1, 1);
+    const rootLeftRight = new TNode(3, 3);
+    const rootRight = new TNode(5, 5);
+    root.left = rootLeft;
+    rootLeft.parent = root;
+    root.right = rootRight;
+    rootRight.parent = root;
+    rootLeft.left = rootLeftLeft;
+    rootLeft.right = rootLeftRight;
+    rootLeftLeft.parent = rootLeft;
+    rootLeftRight.parent = rootLeft;
+    it('performed a correct right rotation', function() {
+      const newPivot = root.rotateRight();
+      expect(newPivot).to.equal(rootLeft);
+      expect(newPivot.parent).to.equal(null);
+      expect(root.parent).to.equal(newPivot);
+      expect(root.left).to.equal(rootLeftRight);
+      expect(rootLeftRight.parent).to.equal(root);
+    });
+  });
+
+  describe('left rotation', function() {
+    const root = new TNode(2, 2);
+    const rootLeft = new TNode(1, 1);
+    const rootRight = new TNode(4, 4);
+    const rootRightLeft = new TNode(3, 3);
+    const rootRightRight = new TNode(5, 5);
+    root.left = rootLeft;
+    root.right = rootRight;
+    rootLeft.parent = root;
+    rootRight.parent = root;
+    rootRight.left = rootRightLeft;
+    rootRight.right = rootRightRight;
+    rootRightLeft.parent = rootRight;
+    rootRightRight.parent = rootRight;
+    it('performed a correct left rotation', function() {
+      const newPivot = root.rotateLeft();
+      expect(newPivot).to.equal(rootRight);
+      expect(newPivot.parent).to.equal(null);
+      expect(root.parent).to.equal(newPivot);
+      expect(root.right).to.equal(rootRightLeft);
+      expect(rootRightLeft.parent).to.equal(root);
+    });
+  });
 })
