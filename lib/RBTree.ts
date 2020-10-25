@@ -4,6 +4,7 @@ export enum KeyMode {
   // static key mode uses node's key property to insert/search
   Static = 1,
   // dynamic key mode evaluates node's keyFunc at insertion/search time
+  // user should make sure the overall order doesn't switch between insertion and search
   Dynamic
 }
 
@@ -15,7 +16,7 @@ class RBTree<K, V> {
     this.keyMode = keyMode || KeyMode.Static;
   }
 
-  insert(value: V, key: K | null = null, keyFunc?: (value: V) => K) {
+  insert(value: V, key: K | null = null, keyFunc?: (value: V) => K): TNode<K, V> {
     switch (this.keyMode) {
       case KeyMode.Static:
         if (key === null) {
@@ -24,7 +25,7 @@ class RBTree<K, V> {
         break;
       case KeyMode.Dynamic:
         if (keyFunc === undefined) {
-          throw new Error("TNode with keyFunc = null cannot be inserted when using dynamic key mode");
+          throw new Error("TNode with keyFunc = undefined cannot be inserted when using dynamic key mode");
         }
     }
     const node = new TNode(value, key, keyFunc);
@@ -37,6 +38,7 @@ class RBTree<K, V> {
       // fix if node is not root AND node's parent is not black
       this.insertFixUp(node);
     }
+    return node;
   }
 
   private insertRec(current: TNode<K, V> | null, node: TNode<K, V>, nodeKey: K, parent: TNode<K, V> | null = null): TNode<K, V> {
