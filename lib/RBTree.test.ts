@@ -47,6 +47,16 @@ describe('RBTree', function() {
         expect(tree.testInvariants()).to.equal(true);
       }
     });
+
+    it('inserting [4, 3, 5, 1, 2, 1.5] does not violate invariants', function() {
+      const numbers = [4, 3, 5, 1, 2, 1.5];
+      const tree = new RBTree<number, number>(KeyMode.Static);
+      for (let i = 0; i < numbers.length; i++) {
+        tree.insert(numbers[i], numbers[i]);
+        expect(tree.testInvariants()).to.equal(true);
+      }
+    })
+
     it('inserting [1, 2, ... 16] does not violate invariants', function() {
       const tree = new RBTree<number, number>(KeyMode.Static);
       for (let i = 1; i <= 16; i++) {
